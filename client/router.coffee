@@ -10,7 +10,7 @@ logSetCurrentView = (currentView)->
 
 ESANRouter = Backbone.Router.extend
   routes: # ! this order matters ! stupid!!
-    "": "main"
+    "": "layout"
     "posts": "posts"
     "comments": "comments"
     "new": "new"
@@ -18,7 +18,7 @@ ESANRouter = Backbone.Router.extend
     #"hospitals": "hospitals" 
     ":detail": "detail" # 查看single object, see below
     
-  main: -> logSetCurrentView "main"
+  layout: -> logSetCurrentView "layout"
   posts: -> logSetCurrentView "posts" 
   comments: -> logSetCurrentView "comments"
   new: -> logSetCurrentView "new"
@@ -41,8 +41,8 @@ Meteor.startup -> # 开始
 
 
 
-#------------------------ Template.main------------------------------- 
-Template.main.events 
+#------------------------ Template.layout------------------------------- 
+Template.layout.events 
   'click a[href^= "/"]': (e,t) ->  # means (a.href)a[href] ="/"
     # Note: Backbone.history.navigate decodeURI e.currentTarget.pathname will not work!
     Backbone.history.navigate e.currentTarget.pathname, true
@@ -54,10 +54,10 @@ Template.main.events
 Template.header.events
   'click #posts': -> Backbone.history.navigate '/posts', true 
   'click #comments': -> Backbone.history.navigate '/comments', true
-  'click #tasks': -> Backbone.history.navigate '/tasks', true
+  #'click #tasks': -> Backbone.history.navigate '/tasks', true
   'click #new': -> Backbone.history.navigate '/new', true
   'click #newUser': -> Backbone.history.navigate '/newUser', true
-  'click #newTaskForm': -> Backbone.history.navigate '/newTaskForm', true
-  'click #printable': -> Session.set "showButtons", not showAsEditMode()
+  #'click #newTaskForm': -> Backbone.history.navigate '/newTaskForm', true
+  #'click #printable': -> Session.set "showButtons", not showAsEditMode()
   #'click #hospitals': -> Backbone.history.navigate '/hospitals', true 
   
