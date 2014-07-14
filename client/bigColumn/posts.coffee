@@ -98,7 +98,7 @@ Template.newComment.events
 		$('#content').val('')
 		$('#title').val('')#.select().focus()
 		Router.go 'posts'
-			
+		$(".panel-collapse collapse").addClass 'panel-collapse collapse in'	
 			
 
 	'click #cancel': (e,t)->
