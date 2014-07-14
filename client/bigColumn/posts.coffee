@@ -20,6 +20,7 @@ Template.wlist.events
 		else	
 			Meteor.call "addUser", Meteor.user().username, username
 			$('#username').val('').select().focus()
+			e.preventDefault()
 			#console.log this, username
 	'click #removeUser':(e,t) ->
 		unless (username = t.find('#username').value?.trim())?
@@ -27,6 +28,7 @@ Template.wlist.events
 		else	
 			Meteor.call "removeUser", Meteor.user().username, username
 			$('#username').val('').select().focus()
+			e.preventDefault()
 			#console.log this, username
 
 Template.posts.rendered = ->
@@ -62,10 +64,10 @@ Template.commentsList.comments = ->
 
 Template.new.events
 	'click #submitNew': (e,t)->
-		unless title = t.find('#title').value?.trim()
+		unless title = ($ '#title').val()?.trim()
 			alert "title can't be empty"
 		else
-			content = t.find('#content').value?.trim()
+			content = ($ '#content').val()#?.trim()
 			#console.log this, 'clicked'
 
 			Meteor.call "addPost",
@@ -74,18 +76,20 @@ Template.new.events
 				content: content
 				#comments:[]
 			Router.go 'posts'
+			e.preventDefault() # prevent from re-rendering whole page
 	
 	'click #cancel': (e,t)->
 		$('#title').val('')
 		$('#content').val('')
 		Router.go 'posts'
-
+		e.preventDefault() # prevent from re-rendering whole page
+		
 Template.newComment.events
 	'click #submit': (e,t) ->
-		title = t.find('#title').value?.trim()
-		content = t.find('#content').value?.trim()
+		title = ($ '#title').val()?.trim()
+		content = ($ '#content').val()#?.trim()
 		unless title 
-			unless content
+			unless content?
 				return
 			#console.log this, 'clicked'
 		
@@ -96,12 +100,11 @@ Template.newComment.events
 			#comments:[]
 
 		$('#content').val('')
-		$('#title').val('')#.select().focus()
-		Router.go 'posts'
-		$(".panel-collapse collapse").addClass 'panel-collapse collapse in'	
-			
 
+		$('#title').val('').select().focus()
+		e.preventDefault() # prevent from re-rendering whole page
+			
 	'click #cancel': (e,t)->
 		$('#content').val ''
 		$('#title').val('').select().focus()
-		
+		e.preventDefault() # prevent from re-rendering whole page
