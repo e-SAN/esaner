@@ -25,7 +25,7 @@ Meteor.publish "likes", (postid)->
 	Likes.find post:postid
 
 Meteor.publish "appusers", (userid) ->
-	if useriddd?
+	if userid?
 		Meteor.users.find()
 
 Meteor.methods
@@ -61,18 +61,19 @@ Meteor.methods
 		unless approved username
 			return
 		date = new Date()
-		id = options.parent
+		pid = options.parent
 		post = {
 			title: options.title
 			content: options.content
 			owner: username #"#{Meteor.user().username}(#{Meteor.user().emails[0].address})" #if (em = Meteor.user().emails?[0]?.address)? then em else Meteor.userId()
 			date: date
-			parent: id
+			parent: pid
 		}
 		
-		if id?
-			Posts.update id,
+		if pid?
+			Posts.update pid,
 				$set: lastCommentDate: date
+				#$add: comments: [post] #<-- should this update the comments property?
 		else
 			post.lastCommentDate = date  
 		
