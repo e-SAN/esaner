@@ -15,7 +15,7 @@ Template.wlist.jk = ->
 
 Template.wlist.events
 	'click #addUser':(e,t) ->
-		unless (username = t.find('#username').value?.trim())?
+		unless (username = ($ '#username').val()?.trim())?
 			return
 		else	
 			Meteor.call "addUser", Meteor.user().username, username
@@ -23,7 +23,7 @@ Template.wlist.events
 			e.preventDefault()
 			#console.log this, username
 	'click #removeUser':(e,t) ->
-		unless (username = t.find('#username').value?.trim())?
+		unless (username = ($ '#username').val()?.trim())?
 			return
 		else	
 			Meteor.call "removeUser", Meteor.user().username, username
