@@ -30,12 +30,10 @@ Router.map -> # => will not work
     path:'/post/:_id'
     data: -> 
       post = Posts.findOne _id: @params._id
-###
       post.comments = Posts.find 
         parent: @params._id 
         sort: date: 1
       post
-###
 ###
   @route 'searchResults',
     path: '/posts/:searchKey'
