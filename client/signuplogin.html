@@ -13,7 +13,7 @@
 	<h1> Sign In </h1>
 	<input type="text" id="li-username" placeholder='Username'>
 	<input type="password" id="li-password" placeholder='Password'>
-	<button> Sign In </button>
+	<button> Sign In </button> Or, <a href="#"><strong>Sign Up</strong></a>
 	</form>
 </template>
 <template name= 'logout'>
@@ -32,8 +32,11 @@
 		{{#if currentUser}}
 			{{> logout}}
 		{{else}}
-			{{> login}}
-			{{> signup}}
+			{{#if visable}}
+				{{> signup}}
+			{{else}}
+				{{> login}}
+			{{/if}}
 		{{/if}}
 	{{/if}}
 </div>
