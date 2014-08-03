@@ -3,6 +3,8 @@
     "bootstrap-3": {},
     "iron-router": {},
     "accounts-ui-bootstrap-3-blaze": {},
-    "fileCollection": {}
+    "fileCollection": {},
+    "persisting-user-status": {},
+    "pages": {}
   }
 }
