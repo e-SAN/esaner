@@ -1,13 +1,15 @@
 approved = (name) ->
+	return false unless name?
 	name is 'J.K' or WList.findOne(username:name)?
+
 share.approved = approved
 
 Meteor.publish "post", (username, id)->
-	if username?
+	if approved username
 		Posts.findOne id if id?
 
 Meteor.publish "posts", (username)->
-	if username? and approved username #and username? in ['j.k'] #<--this works! so we will add white-list
+	if approved username #and username? in ['j.k'] #<--this works! so we will add white-list
 		Posts.find {} #parent:null #,
 			#fields:
 			#	content:false
