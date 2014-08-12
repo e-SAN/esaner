@@ -11,29 +11,44 @@ Router.configure
 Router.map -> # => will not work
   @route 'splash', 
     path: '/'
-    onAfterAction: -> this.render 'posts'
+    onAfterAction: -> this.render 'posts' #doesn't work?
   
   @route 'new'
   
   @route 'posts',
     path: '/posts'
-
-  ###    
+    waitOn: ->
+      Meteor.subscribe "posts", Meteor.user()?.username
+      
     data: ->
-      posts = Posts.find 
+      posts = {} 
+      found = (Posts.find 
         parent:null, 
-        sort: lastCommentDate:-1   
-      posts.fetch()
-  ###
+        sort: lastCommentDate:-1)#.fetch()   
+      #posts.posts = found
+      posts = found
+      posts
+
 
   @route 'fullPost', 
     path:'/post/:_id'
-    data: -> 
+    #data: 
+    waitOn: ->
+      Meteor.subscribe "posts", Meteor.user()?.username
+      #Meteor.subscribe "post", Meteor.user()?.username, @params._id
+      Meteor.subscribe 'comments', Meteor.user()?username, @params._id 
+    data:->
       post = Posts.findOne _id: @params._id
-      post.comments = Posts.find 
-        parent: @params._id 
-        sort: date: 1
-      post
+      if post?
+        post.comments = Posts.find 
+          parent: @params._id 
+          sort: date: 1
+        #post.commentsList.comments = post.comments
+        post
+      else
+        {}
+
+
 ###
   @route 'searchResults',
     path: '/posts/:searchKey'
