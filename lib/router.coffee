@@ -12,14 +12,16 @@ Router.map -> # => will not work
   @route 'splash', 
     path: '/'
     onAfterAction: -> this.render 'posts' #doesn't work?
-  
+    waitOn: ->
+      Meteor.subscribe "posts", Meteor.user()?.username
+      
   @route 'new'
   
   @route 'posts',
     path: '/posts'
     waitOn: ->
       Meteor.subscribe "posts", Meteor.user()?.username
-      
+  ###  
     data: ->
       posts = {} 
       found = (Posts.find 
@@ -28,7 +30,7 @@ Router.map -> # => will not work
       #posts.posts = found
       posts = found
       posts
-
+  ###    
 
   @route 'fullPost', 
     path:'/post/:_id'

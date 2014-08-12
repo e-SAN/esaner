@@ -6,8 +6,8 @@ share.approved = approved
 
 Meteor.publish "post", (username, id)->
 	if approved username
-		Posts.findOne id if id?
-
+		Posts.find _id: id
+		
 Meteor.publish "posts", (username)->
 	if approved username #and username? in ['j.k'] #<--this works! so we will add white-list
 		Posts.find {} #parent:null #,
