@@ -6,6 +6,9 @@ Template.signup.events
 			username: ($ '#su-username').val()
 			password: ($ '#su-password').val()
 		Session.set 'signup',false
+	'click a': (e,t) ->
+		e.preventDefault()
+		Session.set 'signup',false		
 
 Template.signupLogin.visable = ->
 	Session.get 'signup'
