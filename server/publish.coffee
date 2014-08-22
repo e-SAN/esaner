@@ -28,6 +28,7 @@ Meteor.publish "comments", (username, id)->
 Meteor.publish "likes", (postid)->
 	Likes.find post:postid
 
-Meteor.publish "appusers", (userid) ->
-	if userid?
-		Meteor.users.find()
+Meteor.publish "appusers", (username) ->
+	if approved username
+		WList.find {} #Meteor.users.find().fetch()
+

@@ -1,0 +1,12 @@
+template(name="userList") 
+	.column
+		h1 Users 
+		p Choose another user to start a chat with: 
+		ul.userList
+			each users
+				+userItem
+
+template(name="userItem")
+	li 
+		button #{this} 
+

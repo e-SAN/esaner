@@ -13,14 +13,14 @@ Router.map -> # => will not work
     path: '/'
     onAfterAction: -> this.render 'posts' #doesn't work?
     waitOn: ->
-      Meteor.subscribe "posts", Meteor.user()?.username
+      [Meteor.subscribe "posts", Meteor.user()?.username, Meteor.subscribe "appusers", Meteor.user()?.username]
 
   @route 'new'
   
   @route 'posts',
     path: '/posts'
     waitOn: ->
-      Meteor.subscribe "posts", Meteor.user()?.username
+      [Meteor.subscribe "posts", Meteor.user()?.username]
     data: ->
       posts = {} 
       found = (Posts.find 
@@ -34,7 +34,7 @@ Router.map -> # => will not work
     path:'/post/:_id'
     #data: 
     waitOn: ->
-      Meteor.subscribe "fullpost", Meteor.user()?.username, @params._id
+      [Meteor.subscribe "fullpost", Meteor.user()?.username, @params._id]
     data:->
       post = Posts.findOne _id: @params._id
       if post?
@@ -45,6 +45,11 @@ Router.map -> # => will not work
         post
       else
         {}
+###
+  @route 'layout',
+    data: ->
+      [Meteor.subscribe 'appusers']
+###
 
 ###
   @route 'searchResults',
