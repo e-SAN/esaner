@@ -45,12 +45,12 @@ Router.map -> # => will not work
         post
       else
         {}
-###
-  @route 'layout',
-    data: ->
-      [Meteor.subscribe 'appusers']
-###
 
+  @route 'layout',
+    waitOn: ->
+      [Meteor.subscribe 'appusers']
+    data: ->
+      WList.find {}
 ###
   @route 'searchResults',
     path: '/posts/:searchKey'
