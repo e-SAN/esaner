@@ -2,7 +2,7 @@
 ###
 Posts.deny #something wrong, not denied at all
 	insert: (post)->
-		not share.approved postOwner 
+		not approved postOwner 
 		
 Posts.allow 
 	insert: (userId, doc) -> userId? and doc.owner is userId 

@@ -7,7 +7,8 @@
       "accounts-ui-bootstrap-3-blaze": {},
       "fileCollection": {},
       "persisting-user-status": {},
-      "pages": {}
+      "pages": {},
+      "jade": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/alethes/meteor-pages.git",
         "tag": "v1.0.20",
         "commit": "717cbac89f02d2f1bb160b24c997050ce2dee45e"
+      },
+      "jade": {
+        "git": "https://github.com/mquandalle/meteor-jade.git",
+        "tag": "v0.2.6",
+        "commit": "ab1edd68dccae6f5e946d9a84547043816d57864"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

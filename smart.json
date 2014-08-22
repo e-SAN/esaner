@@ -5,6 +5,7 @@
     "accounts-ui-bootstrap-3-blaze": {},
     "fileCollection": {},
     "persisting-user-status": {},
-    "pages": {}
+    "pages": {},
+    "jade": {}
   }
 }
