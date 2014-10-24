@@ -3,16 +3,34 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-app-packages
 coffeescript
-bootstrap-3
-iron-router
-accounts-password
 accounts-base
-accounts-ui-bootstrap-3-blaze
+accounts-password
 jquery
+mizzao:bootstrap-3
+iron:core
+iron:router
 email
-fileCollection
-persisting-user-status
-pages
-jade
+iron:dynamic-template
+alethes:pages
+mizzao:user-status
+meteor-platform
+dburles:collection-helpers
+aslagle:reactive-table
+mrt:moment
+sacha:spin
+alanning:roles
+mquandalle:jade
+aldeed:collection2
+mrt:accounts-ui-bootstrap-3-blaze
+cfs:standard-packages
+cfs:gridfs
+cfs:filesystem
+yogiben:autoform-file
+aldeed:autoform
+yogiben:autoform-modals
+chrismbeckett:fontawesome4
+aldeed:simple-schema
+perak:user-roles
+yogiben:admin
+
