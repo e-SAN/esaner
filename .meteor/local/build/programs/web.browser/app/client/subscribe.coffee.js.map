@@ -1,0 +1,2 @@
+)]}'
+{"version":3,"file":"/client/subscribe.coffee.js","sources":["subscribe.coffee"],"names":[],"mappings":";AAAA,MAAM,CAAC,SAAP,CAAiB,UAAjB;A","sourcesContent":["Meteor.subscribe \"appusers\""]}

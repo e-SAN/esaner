@@ -1,0 +1,2 @@
+)]}'
+{"version":3,"file":"/main/adminConfig.coffee.js","sources":["adminConfig.coffee"],"names":[],"mappings":";AAAA,IAAC,YAAD,GACE;eAAa,CAAC,UAAD,CAAb;CADF;;AAEA;;;;;GAFA;A","sourcesContent":["@AdminConfig =\n  adminEmails: ['j@kk.com']\n###\n  collections:\n    Posts: {}\n    Comments: {}\n###\n\n#Houston.add_collection Meteor.users\n"]}

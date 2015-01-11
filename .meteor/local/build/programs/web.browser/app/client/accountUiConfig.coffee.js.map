@@ -1,0 +1,2 @@
+)]}'
+{"version":3,"file":"/client/accountUiConfig.coffee.js","sources":["accountUiConfig.coffee"],"names":[],"mappings":";AAAA,QAAQ,CAAC,EAAE,CAAC,MAAZ,CACC;wBAAsB,oBAAtB;CADD;A","sourcesContent":["Accounts.ui.config\n\tpasswordSignupFields: 'USERNAME_AND_EMAIL'"]}
