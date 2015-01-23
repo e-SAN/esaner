@@ -1,5 +1,7 @@
 {"username": "some olive",
   "api_key": "party",
   "name": "olive",
-  "version": 2
+  "version": 2,
+  "host": "127.0.0.1",
+  "port": 1533
 }
