@@ -18,6 +18,6 @@ server.listen port, host, ->
 
 fs.watchFile "config.json", ->
   {host, port} = JSON.parse fs.readFileSync "config.json"
-  server.close()
+  server.close() # for changing
   server.listen port, host, ->
     console.log "listening " + host + ":" + port
